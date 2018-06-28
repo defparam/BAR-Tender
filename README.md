@@ -10,6 +10,15 @@ Features:
 - Tons of memory functions and kernel access features
 - And more...
 
+Limitations:
+- A bunch... Targets only Windows 10 x64
+
+# High Level Architecture
+
+<center>
+![](https://i.imgur.com/CsX7Erh.png)
+</center>
+
 # Python APIs
 
 | Function | Arguments | Description |
