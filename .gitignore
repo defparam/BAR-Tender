@@ -1,0 +1,8 @@
+/fpga/tb
+**/__pycache__
+/driver/BAR-Tender/x64
+/driver/BAR-Tender/.vs
+/fpga/vivado/BAR-Tender.cache
+/fpga/vivado/BAR-Tender.hw
+/fpga/vivado/BAR-Tender.runs
+/fpga/vivado/.Xil
