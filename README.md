@@ -8,7 +8,7 @@ Features:
 - **fpgaRead64()** and **fpgaWrite64()** to FPGA BAR0 region
 - **memRead64()** and **memWrite64()**
 	-These functions instruct the FPGA/Driver to perform physical memory access
-- **vmemRead64()** and** vmemWrite64()**
+- **vmemRead64()** and **vmemWrite64()**
 	-These functions instruct the FPGA/Driver to perform a virtual memory access
 - **find_KPCR()** - Searches Kernel memory for the Kernel Processor Control Region structure which is used for finding other Kernel structures of interest
 - **va2pa()** - Translates a virtual address to its physical address
