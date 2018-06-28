@@ -4,17 +4,30 @@ Welcome everyone! BAR-Tender is a physical FPGA I/O Device which services physic
 
 Features:
 - Perfect Windows FPGA UMDF2 driver example to fork
+- Leverages MSI Interrupts to indicate FPGA operation completion
 - Framework and examples written for **Python 3.5** (Ctypes WinAPI Interface)
-- **fpgaRead64()** and **fpgaWrite64()** to FPGA BAR0 region
-- **memRead64()** and **memWrite64()**
-	-These functions instruct the FPGA/Driver to perform physical memory access
-- **vmemRead64()** and **vmemWrite64()**
-	-These functions instruct the FPGA/Driver to perform a virtual memory access
-- **find_KPCR()** - Searches Kernel memory for the Kernel Processor Control Region structure which is used for finding other Kernel structures of interest
-- **va2pa()** - Translates a virtual address to its physical address
-- **get_dirbase()** - Walks the EPROCESS list and finds CR3 for a specific PID
-- **swap_pa()** - (DANGEROUS) - Allows you to swap the physical address pointer in the PTE of a given virtual address and returns the old physical address
+- Driver interface adaptable to other languages using WinAPI
+- Tons of memory functions and kernel access features
 - And more...
+
+# Python APIs
+
+| Function | Arguments | Description |
+| --- | --- | --- |
+| BARTender.**fpgaRead64**(addr) | **addr** = physical addr on PCIe BAR of FPGA<br>**Return** = 64-bit data | Reads FPGA MMIO |
+| BARTender.**fpgaWrite64**(addr, data) | **addr** = physical addr on PCIe BAR of FPGA<br>**data** = 64-bit data to write<br>**Return** = None | Writes FPGA MMIO |
+| BARTender.**memRead64**(addr) | **addr** = Host physical memory address<br>**Return** = 64-bit data | Reads Physical Memory |
+| BARTender.**memWrite64**(addr, data) | **addr** = Host physical memory address<br>**data** = 64-bit data to write<br>**Return** = None | Writes Physical Memory |
+| BARTender.**vmemRead64**(CR3,addr) | **CR3** = Target process CR3/DirBase<br>**addr** = Process virtual memory address<br>**Return** = 64-bit data | Reads Process Virtual Memory |
+| BARTender.**vmemWrite64**(CR3,addr, data) | **CR3** = Target process CR3/DirBase<br>**addr** = Host physical memory address<br>**data** = 64-bit data to write<br>**Return** = None | Writes Process Virtual Memory |
+| BARTender.**find_KPCR**() | **Return** = Virtual address of Kernel Processor Control Region Structure | Scans memory for the KPCR pointer and returns it |
+| BARTender.**va2pa**(CR3,VADDR) | **CR3** = Target process CR3/DirBase<br> **VADDR** = Virtual address to translate to Physical Address <br>**Return** = Physical Address | Performs a virtual to physical address translation |
+| BARTender.**swap_pa**(dirbase,vaddr,new_pa) | **dirbase** = Target process CR3/DirBase<br> **vaddr** = Virtual address to target <br>**new_pa** = New physical address to store in the PTE of this virtual address <br>**Return** = Old Physical Address that was replaces | Performs a physical address swap to a target PTE to a target process |
+| BARTender.**get_dirbase**(pid) | **pid** = Target process id<br> **Return** = Dirbase/CR3 of target process id | Scans kernel memory and returns the Dirbase/CR3 for the target PID |
+
+# Driver APIs
+Take a look at **BARTender.py** and how it uses Ctypes to communicate to the driver. Also look at **public.h** and **MsgProcessor.cpp** to understand how driver messages are passed via IOCTL.
+
 
 # Install
 This project is completely open-source so feel free to install Vivado and Visual Studio to compile your own binaries. However for those who would like to quickly use the existing binaries, I have releases the FPGA bitstream/drivers/test certificate in the /release area
@@ -47,21 +60,6 @@ The FPGA platform used on this project is the [PicoEVB](http://www.picoevb.com/ 
 
 
 ![](https://i.imgur.com/JJrGQGq.png)   </center>
-
-# Python APIs
-
-| Function | Arguments | Description |
-| --- | --- | --- |
-| BARTender.**fpgaRead64**(addr) | **addr** = physical addr on PCIe BAR of FPGA<br>**Return** = 64-bit data | Reads FPGA MMIO |
-| BARTender.**fpgaWrite64**(addr, data) | **addr** = physical addr on PCIe BAR of FPGA<br>**data** = 64-bit data to write<br>**Return** = None | Writes FPGA MMIO |
-| BARTender.**memRead64**(addr) | **addr** = Host physical memory address<br>**Return** = 64-bit data | Reads Physical Memory |
-| BARTender.**memWrite64**(addr, data) | **addr** = Host physical memory address<br>**data** = 64-bit data to write<br>**Return** = None | Writes Physical Memory |
-| BARTender.**vmemRead64**(CR3,addr) | **CR3** = Target process CR3/DirBase<br>**addr** = Process virtual memory address<br>**Return** = 64-bit data | Reads Process Virtual Memory |
-| BARTender.**vmemWrite64**(CR3,addr, data) | **CR3** = Target process CR3/DirBase<br>**addr** = Host physical memory address<br>**data** = 64-bit data to write<br>**Return** = None | Writes Process Virtual Memory |
-| BARTender.**find_KPCR**() | **Return** = Virtual address of Kernel Processor Control Region Structure | Scans memory for the KPCR pointer and returns it |
-| BARTender.**va2pa**(CR3,VADDR) | **CR3** = Target process CR3/DirBase<br> **VADDR** = Virtual address to translate to Physical Address <br>**Return** = Physical Address | Performs a virtual to physical address translation |
-| BARTender.**swap_pa**(dirbase,vaddr,new_pa) | **dirbase** = Target process CR3/DirBase<br> **vaddr** = Virtual address to target <br>**new_pa** = New physical address to store in the PTE of this virtual address <br>**Return** = Old Physical Address that was replaces | Performs a physical address swap to a target PTE to a target process |
-| BARTender.**get_dirbase**(pid) | **pid** = Target process id<br> **Return** = Dirbase/CR3 of target process id | Scans kernel memory and returns the Dirbase/CR3 for the target PID |
 
 
 # Example - test1.py
