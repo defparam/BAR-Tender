@@ -48,6 +48,22 @@ The FPGA platform used on this project is the [PicoEVB](http://www.picoevb.com/ 
 
 ![](https://i.imgur.com/JJrGQGq.png)   </center>
 
+# Python APIs
+
+| Function | Arguments | Description |
+| --- | --- | --- |
+| BARTender.**fpgaRead64**(addr) | **addr** = physical addr on PCIe BAR of FPGA<br>**Return** = 64-bit data | Reads FPGA MMIO |
+| BARTender.**fpgaWrite64**(addr, data) | **addr** = physical addr on PCIe BAR of FPGA<br>**data** = 64-bit data to write<br>**Return** = None | Writes FPGA MMIO |
+| BARTender.**memRead64**(addr) | **addr** = Host physical memory address<br>**Return** = 64-bit data | Reads Physical Memory |
+| BARTender.**memWrite64**(addr, data) | **addr** = Host physical memory address<br>**data** = 64-bit data to write<br>**Return** = None | Writes Physical Memory |
+| BARTender.**vmemRead64**(CR3,addr) | **CR3** = Target process CR3/DirBase<br>**addr** = Process virtual memory address<br>**Return** = 64-bit data | Reads Process Virtual Memory |
+| BARTender.**vmemWrite64**(CR3,addr, data) | **CR3** = Target process CR3/DirBase<br>**addr** = Host physical memory address<br>**data** = 64-bit data to write<br>**Return** = None | Writes Process Virtual Memory |
+| BARTender.**find_KPCR**() | **Return** = Virtual address of Kernel Processor Control Region Structure | Scans memory for the KPCR pointer and returns it |
+| BARTender.**va2pa**(CR3,VADDR) | **CR3** = Target process CR3/DirBase<br> **VADDR** = Virtual address to translate to Physical Address <br>**Return** = Physical Address | Performs a virtual to physical address translation |
+| BARTender.**swap_pa**(dirbase,vaddr,new_pa) | **dirbase** = Target process CR3/DirBase<br> **vaddr** = Virtual address to target <br>**new_pa** = New physical address to store in the PTE of this virtual address <br>**Return** = Old Physical Address that was replaces | Performs a physical address swap to a target PTE to a target process |
+| BARTender.**get_dirbase**(pid) | **pid** = Target process id<br> **Return** = Dirbase/CR3 of target process id | Scans kernel memory and returns the Dirbase/CR3 for the target PID |
+
+
 # Example - test1.py
 This example tests fpga reads and writes from Host to FPGA, Fpga reads and writes from FPGA to Host (initiated by Host) and dumps the first 0x180 bytes of physical host memory.
 ![](https://i.imgur.com/ew1DMG1.png)
