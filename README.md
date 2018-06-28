@@ -16,6 +16,12 @@ Features:
 - **swap_pa()** - (DANGEROUS) - Allows you to swap the physical address pointer in the PTE of a given virtual address and returns the old physical address
 - And more...
 
+# Install
+This project is completely open-source so feel free to install Vivado and Visual Studio to compile your own binaries. However for those who would like to quick use the existing binaries I have releases the FPGA bitstream/drivers/test certificate in the /release area
+1. Once you get the PicoEVB you will need to load the BAR-Tender.bit file onto the device. There are many guides that exist on how to do this.
+2. In order to install the UMDF2 driver you will need to load the test certificate and then after install the inf file by right clicking and selecting install
+3. If you do not trust the certificate and binaries feel free to compile from source!
+
 # Hardware
 The FPGA platform used on this project is the [PicoEVB](http://www.picoevb.com/ "PicoEVB"). The PicoEVB is a relatively inexpensive FPGA PCIe card that fits into an M.2 A+E slots. You can purchase your own PicoEVB for **$219** dollars. The hardware specs are as follows:
 
