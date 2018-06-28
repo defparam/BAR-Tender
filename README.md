@@ -19,6 +19,7 @@ Features:
 # Hardware
 The FPGA platform used on this project is the [PicoEVB](http://www.picoevb.com/ "PicoEVB"). The PicoEVB is a relatively inexpensive FPGA PCIe card that fits into an M.2 A+E slots. You can purchase your own PicoEVB for **$219** dollars. The hardware specs are as follows:
 
+<center>
 
 | Feature | Specification |
 | --- | --- |
@@ -34,14 +35,7 @@ The FPGA platform used on this project is the [PicoEVB](http://www.picoevb.com/ 
 | External MGT connection | 1x MGT via U.FL connectors |
 | External clock ref | 1x clkin via U.FL connectors |
 | User-controllable LEDs | 3 |
-<center>
-<div class="row">
-  <div class="column">
- <img src="https://cdn.shopify.com/s/files/1/0005/3470/8275/products/H3-600x660-ind_1024x1024@2x.png?v=1520188998" alt="Smiley face" height="350" width="400">
-  </div>
-  <div class="column">
-  <img src="https://cdn.shopify.com/s/files/1/0005/3470/8275/files/pico-d-diagram_720x.png?v=1520300483" alt="Smiley face" height="300" width="350">
-  </div>
- </div></center>
 
+
+![](https://i.imgur.com/JJrGQGq.png) </center>
 
