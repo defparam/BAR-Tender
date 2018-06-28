@@ -22,6 +22,9 @@ This project is completely open-source so feel free to install Vivado and Visual
 2. In order to install the UMDF2 driver you will need to load the test certificate and then after install the inf file by right clicking and selecting install
 3. If you do not trust the certificate and binaries feel free to compile from source!
 
+When Sucessful your BAR-Tender device should look like this in the devive manager:
+![](https://pbs.twimg.com/media/DggoIngUEAAigix.jpg)
+
 # Hardware
 The FPGA platform used on this project is the [PicoEVB](http://www.picoevb.com/ "PicoEVB"). The PicoEVB is a relatively inexpensive FPGA PCIe card that fits into an M.2 A+E slots. You can purchase your own PicoEVB for **$219** dollars. The hardware specs are as follows:
 
@@ -43,13 +46,16 @@ The FPGA platform used on this project is the [PicoEVB](http://www.picoevb.com/ 
 | User-controllable LEDs | 3 |
 
 
-![](https://i.imgur.com/JJrGQGq.png)
+![](https://i.imgur.com/JJrGQGq.png)   </center>
 
 # Example - test1.py
+This example tests fpga reads and writes from Host to FPGA, Fpga reads and writes from FPGA to Host (initiated by Host) and dumps the first 0x180 bytes of physical host memory.
 ![](https://i.imgur.com/ew1DMG1.png)
 
 # Example - test2.py
+This example searches for kernel memory structures and dumps all EPROCESS structures
 ![](https://i.imgur.com/W8P9eXs.png)
 
 # Example - test3.py
-![](https://i.imgur.com/5E3rux1.png) </center>
+This example shows how to use BAR-Tender to perform a PTE pointer swap
+![](https://i.imgur.com/5E3rux1.png)
