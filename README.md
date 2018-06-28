@@ -17,7 +17,7 @@ Features:
 - And more...
 
 # Install
-This project is completely open-source so feel free to install Vivado and Visual Studio to compile your own binaries. However for those who would like to quick use the existing binaries I have releases the FPGA bitstream/drivers/test certificate in the /release area
+This project is completely open-source so feel free to install Vivado and Visual Studio to compile your own binaries. However for those who would like to quickly use the existing binaries, I have releases the FPGA bitstream/drivers/test certificate in the /release area
 1. Once you get the PicoEVB you will need to load the BAR-Tender.bit file onto the device. There are many guides that exist on how to do this.
 2. In order to install the UMDF2 driver you will need to load the test certificate and then after install the inf file by right clicking and selecting install
 3. If you do not trust the certificate and binaries feel free to compile from source!
