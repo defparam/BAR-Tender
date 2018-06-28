@@ -43,13 +43,13 @@ The FPGA platform used on this project is the [PicoEVB](http://www.picoevb.com/ 
 | User-controllable LEDs | 3 |
 
 
-![](https://i.imgur.com/JJrGQGq.png) </center>
+![](https://i.imgur.com/JJrGQGq.png)
 
 # Example - test1.py
-<center>![](https://i.imgur.com/ew1DMG1.png) </center>
+![](https://i.imgur.com/ew1DMG1.png)
 
 # Example - test2.py
-<center>![](https://i.imgur.com/W8P9eXs.png) </center>
+![](https://i.imgur.com/W8P9eXs.png)
 
 # Example - test3.py
-<center>![](https://i.imgur.com/5E3rux1.png </center>
+![](https://i.imgur.com/5E3rux1.png) </center>
